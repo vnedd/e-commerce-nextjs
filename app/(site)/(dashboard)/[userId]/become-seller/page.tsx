@@ -44,8 +44,7 @@ const BecomeSeller = () => {
                             Where your dreams meet opportunity! Join our thriving Nedd E-commerce community of sellers
                             and transform your passion into profit. Start your journey as a Nedd seller today and unlock
                             endless opportunities to showcase your products, connect with customers, and grow your
-                            business. It&apos;s easy, it&apos;s exciting, and it&apos;s all right here, become a Nedd
-                            seller with us now!
+                            business. Become a Nedd seller with us now!
                         </p>
                         <Button className="w-[200px] rounded-full mt-5" onClick={() => setIsOpen(true)}>
                             <p className="mr-2">Register now </p>
