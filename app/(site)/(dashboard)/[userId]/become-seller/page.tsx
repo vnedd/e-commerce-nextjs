@@ -7,6 +7,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { BsArrowRight } from 'react-icons/bs';
 const BecomeSeller = () => {
     const { data: user } = useCurrentUser();
@@ -24,8 +25,13 @@ const BecomeSeller = () => {
             await axios.post(`/api/${user?.id}/register-seller`, {
                 isSeller: true,
             });
-        } catch (error) {
+            toast.success('Register Sell on Nedd successfully!');
+            redirect('/seller');
+        } catch (error: any) {
             console.log(error);
+            if (error.response) {
+                toast.error(error.response.data.message || error.response.statusText);
+            }
         } finally {
             setLoading(false);
         }

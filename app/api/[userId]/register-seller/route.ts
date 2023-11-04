@@ -1,5 +1,6 @@
-
 import { NextResponse } from 'next/server';
+
+import prismadb from '@/lib/prismadb'
 
 export async function POST(req: Request, { params }: { params: { userId: string } }) {
 
@@ -19,11 +20,11 @@ export async function POST(req: Request, { params }: { params: { userId: string 
         })
 
         if (!user) {
-            return new Response(`No User found with the given ID`, { status: 404 })
+            return new NextResponse(`No User found with the given ID`, { status: 404 })
         }
 
         if (user?.isSeller) {
-            return new Response('You are already a seller', { status: 200 })
+            return new NextResponse('You are already a seller', { status: 200 })
         }
         // Update the user to be a seller
         const updateUser = await prismadb.user.update({
@@ -38,6 +39,6 @@ export async function POST(req: Request, { params }: { params: { userId: string 
 
 
     } catch (error) {
-        NextResponse.json('REGISTE_SELLER_FAILED', { status: 500 })
+        return NextResponse.json('REGISTE_SELLER_FAILED', { status: 500 })
     }
 }
