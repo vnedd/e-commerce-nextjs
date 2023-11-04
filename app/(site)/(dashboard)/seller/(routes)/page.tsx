@@ -19,7 +19,7 @@ const SetupPage = () => {
         if (!isOpen && !store) {
             onOpen();
         }
-    }, [isOpen, onOpen]);
+    }, [isOpen, onOpen, store]);
 
     return null;
 };
