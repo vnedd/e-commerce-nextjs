@@ -26,7 +26,7 @@ const BecomeSeller = () => {
                 isSeller: true,
             });
             toast.success('Register Sell on Nedd successfully!');
-            redirect('/seller');
+            window.location.assign('/seller');
         } catch (error: any) {
             console.log(error);
             if (error.response) {

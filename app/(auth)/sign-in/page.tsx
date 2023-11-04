@@ -43,7 +43,7 @@ const SignInPage = () => {
             await signIn('credentials', {
                 ...data,
             });
-            router.push('/');
+            window.location.assign('/');
             toast.success('Login Successfully!');
         } catch (error) {
             console.log(error);
