@@ -160,8 +160,8 @@ const SettingsForm = () => {
             description: store?.description,
             address: store?.address,
             phone: store?.phone,
-            storeAvatarUrl: store?.storeAvatarUrl,
-            storeBannerUrl: store?.storeBannerUrl,
+            storeAvatarUrl: store?.storeAvatarUrl || '',
+            storeBannerUrl: store?.storeBannerUrl || '',
         },
     });
 
