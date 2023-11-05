@@ -29,8 +29,8 @@ const formSchema = z.object({
         message: 'Please sellect you location',
     }),
     phone: z.string(),
-    storeAvatarUrl: z.string(),
-    storeBannerUrl: z.string(),
+    storeAvatarUrl: z.string().optional(),
+    storeBannerUrl: z.string().optional(),
 });
 
 const addressMockup = [
