@@ -8,7 +8,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input';
 
 import useCurrentUser from '@/hooks/use-current-user';
-import UserAvatarUpload from '@/components/ui/user-avatar-upload';
+import SingleImageUpload from '@/components/ui/single-image-upload';
 import { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -52,17 +52,19 @@ const UpdateInfoForm = () => {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div>
                         <h4 className="text-xl font-semibold mb-3">About You</h4>
-                        <div className="grid grid-rows-2 w-full lg:w-1/2  gap-x-4">
-                            <div className="flex items-center space-x-4">
+                        <div className=" w-full lg:w-1/2 gap-x-4">
+                            <div className="flex items-center space-x-4 mb-5">
                                 <FormField
                                     control={form.control}
                                     name="image"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
-                                                <UserAvatarUpload
+                                                <SingleImageUpload
                                                     value={
-                                                        field.value ? field.value : user?.image || '/placeholder.png'
+                                                        field.value
+                                                            ? field.value
+                                                            : user?.image || '/placeholder-avatar.svg'
                                                     }
                                                     disabled={loading}
                                                     onChange={(url) => field.onChange(url)}

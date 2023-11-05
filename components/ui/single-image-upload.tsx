@@ -6,13 +6,14 @@ import { useEffect, useState } from 'react';
 import { AiOutlineUpload } from 'react-icons/ai';
 
 import { cn } from '@/lib/utils';
-interface ImageUploadProps {
+interface SingleImageUploadProps {
     disabled?: boolean;
     onChange: (value: string) => void;
     value: string;
+    className?: String;
 }
 
-const UserAvatarUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, value }) => {
+const SingleImageUpload: React.FC<SingleImageUploadProps> = ({ disabled, onChange, value, className }) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
@@ -38,8 +39,9 @@ const UserAvatarUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, valu
                     <div className="group">
                         <div
                             className={cn(
-                                'relative w-[80px] h-[80px] rounded-full overflow-hidden flex items-center justify-center',
+                                'relative w-[150px] h-[150px] rounded-lg overflow-hidden flex items-center justify-center',
                                 disabled && 'opacity-5 cursor-not-allowed pointer-events-none',
+                                className,
                             )}
                             onClick={onClick}
                         >
@@ -55,4 +57,4 @@ const UserAvatarUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, valu
     );
 };
 
-export default UserAvatarUpload;
+export default SingleImageUpload;

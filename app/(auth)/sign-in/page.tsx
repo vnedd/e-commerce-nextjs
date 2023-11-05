@@ -38,19 +38,21 @@ const SignInPage = () => {
     });
 
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
-        try {
-            setLoading(true);
-            await signIn('credentials', {
-                ...data,
-            });
-            window.location.assign('/');
-            toast.success('Login Successfully!');
-        } catch (error) {
-            console.log(error);
-            toast.success('Something went wrong!');
-        } finally {
-            setLoading(false);
-        }
+        setLoading(true);
+
+        await signIn('credentials', {
+            ...data,
+            redirect: false,
+        }).then(({ ok, error }: any) => {
+            if (ok) {
+                toast.success('Login Successfully!');
+                setLoading(false);
+                window.location.replace('/');
+            } else {
+                toast.error(error);
+                setLoading(false);
+            }
+        });
     };
 
     return (

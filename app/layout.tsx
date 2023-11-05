@@ -4,6 +4,7 @@ import './globals.css';
 import { ToastProvider } from '@/providers/toast-provider';
 import AuthProvider from '@/providers/auth-provider';
 import { ModalProvider } from '@/providers/modal-store.provider';
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -15,11 +16,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     return (
         <html lang="en">
             <body className={inter.className}>
-                <AuthProvider>
-                    <ToastProvider />
-                    <ModalProvider />
-                    {children}
-                </AuthProvider>
+                <PrimeReactProvider>
+                    <AuthProvider>
+                        <ToastProvider />
+                        <ModalProvider />
+                        {children}
+                    </AuthProvider>
+                </PrimeReactProvider>
             </body>
         </html>
     );

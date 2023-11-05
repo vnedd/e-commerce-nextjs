@@ -48,7 +48,7 @@ const UserButton = () => {
             <DropdownMenuTrigger className="outline-none ring-0">
                 <div className="bg-white px-6 py-3 rounded-full cursor-pointer border-neutral-700 border-1 shadow-sm hover:shadow-md flex items-center flex-row gap-x-3">
                     <AiOutlineMenu size={18} />
-                    <UserAvatar href={user?.image || '/placeholder.png'} size={50} />
+                    <UserAvatar href={user?.image || '/placeholder-avatar.svg'} size={50} />
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[240px]">
@@ -56,7 +56,11 @@ const UserButton = () => {
                     <>
                         <DropdownMenuLabel>
                             <div className="flex flex-row items-center gap-x-3">
-                                <UserAvatar href={user?.image || '/placeholder.png'} size={60} className="w-10 h-10" />
+                                <UserAvatar
+                                    href={user?.image || '/placeholder-avatar.svg'}
+                                    size={60}
+                                    className="w-10 h-10"
+                                />
                                 <div>
                                     <h6 className="text-md">{user.name}</h6>
                                     <Link href={`/${user.id}`} className="text-sm font-normal  text-neutral-500">

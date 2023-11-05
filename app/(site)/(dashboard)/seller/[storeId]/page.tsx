@@ -11,7 +11,7 @@ const StorePage = () => {
         }
     }, [isOpen, onClose]);
 
-    return <div>StorePage</div>;
+    return <div>Dashboard page</div>;
 };
 
 export default StorePage;
