@@ -73,19 +73,21 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
             <Separator />
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Category Name</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Example: Clothings" {...field} disabled={loading} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Category Name</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Example: Clothings" {...field} disabled={loading} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
                     <Button type="submit" className="rounded-full" variant={'outline'} disabled={loading}>
                         {loading ? (
                             <div className="flex items-center">

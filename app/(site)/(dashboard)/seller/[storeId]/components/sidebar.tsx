@@ -3,6 +3,7 @@ import { usePathname } from 'next/navigation';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { MdOutlineCategory } from 'react-icons/md';
+import { BsBoxes } from 'react-icons/bs';
 import { IoIosResize } from 'react-icons/io';
 import { GiPaintBucket } from 'react-icons/gi';
 import Link from 'next/link';
@@ -41,6 +42,12 @@ const SideBar = () => {
             active: pathname.startsWith(`/seller/${store?.id}/colors`),
         },
         {
+            path: `/seller/${store?.id}/products`,
+            name: 'Products',
+            icon: BsBoxes,
+            active: pathname.startsWith(`/seller/${store?.id}/products`),
+        },
+        {
             path: `/seller/${store?.id}/settings`,
             name: ' Store Settings',
             icon: IoSettingsOutline,
@@ -68,7 +75,7 @@ const SideBar = () => {
                         >
                             <Link href={route.path} className="flex items-center gap-x-3 w-full h-full">
                                 <Icon size={20} />
-                                <p className="hidden md:block">{route.name}</p>
+                                <p className="hidden md:block font-semibold text-sm">{route.name}</p>
                             </Link>
                         </div>
                     );

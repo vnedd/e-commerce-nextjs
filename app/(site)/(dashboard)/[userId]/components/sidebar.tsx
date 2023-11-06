@@ -65,7 +65,7 @@ const SideBar = () => {
                         >
                             <Link href={route.path} className="flex items-center gap-x-3 w-full h-full">
                                 <Icon size={20} />
-                                <p className="hidden md:block">{route.name}</p>
+                                <p className="hidden md:block text-sm font-semibold">{route.name}</p>
                             </Link>
                         </div>
                     );

@@ -34,7 +34,6 @@ export async function POST(req: Request, { params }: { params: { storeId: string
                 name,
                 value,
                 storeId: params.storeId
-
             }
         })
         return NextResponse.json(size, { status: 200 });

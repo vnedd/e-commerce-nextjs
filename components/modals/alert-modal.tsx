@@ -15,7 +15,7 @@ const AlertModal: React.FC<AlertModalProps> = ({ title, description, loading, is
     return (
         <Modal title={title} description={description} isOpen={isOpen} onClose={onClose}>
             <div className="flex space-x-2 justify-end">
-                <Button variant={'outline'} onClick={onClose}>
+                <Button variant={'outline'} onClick={onClose} disabled={loading}>
                     Cancel
                 </Button>
                 <Button onClick={onConfirm} disabled={loading}>
