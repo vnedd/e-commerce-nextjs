@@ -1,14 +1,17 @@
 'use client';
-import useCurrentUser from '@/hooks/use-current-user';
 import { usePathname } from 'next/navigation';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { IoSettingsOutline } from 'react-icons/io5';
+import { MdOutlineCategory } from 'react-icons/md';
+import { IoIosResize } from 'react-icons/io';
+import { GiPaintBucket } from 'react-icons/gi';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { BiLogOutCircle } from 'react-icons/bi';
 import { signOut } from 'next-auth/react';
 import Logo from '@/components/logo';
 import useCurrentStore from '@/hooks/use-current-store';
+
 const SideBar = () => {
     const { data: store } = useCurrentStore();
     const pathname = usePathname();
@@ -18,6 +21,24 @@ const SideBar = () => {
             name: ' Dashboard',
             icon: LuLayoutDashboard,
             active: pathname === `/seller/${store?.id}`,
+        },
+        {
+            path: `/seller/${store?.id}/categories`,
+            name: 'Categories',
+            icon: MdOutlineCategory,
+            active: pathname.startsWith(`/seller/${store?.id}/categories`),
+        },
+        {
+            path: `/seller/${store?.id}/sizes`,
+            name: 'Sizes',
+            icon: IoIosResize,
+            active: pathname.startsWith(`/seller/${store?.id}/sizes`),
+        },
+        {
+            path: `/seller/${store?.id}/colors`,
+            name: 'Colors',
+            icon: GiPaintBucket,
+            active: pathname.startsWith(`/seller/${store?.id}/colors`),
         },
         {
             path: `/seller/${store?.id}/settings`,

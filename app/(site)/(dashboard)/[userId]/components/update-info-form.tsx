@@ -13,6 +13,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { TailSpin } from 'react-loader-spinner';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
     name: z.string().min(2, {
@@ -24,6 +25,7 @@ const formSchema = z.object({
 const UpdateInfoForm = () => {
     const { data: user } = useCurrentUser();
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -37,7 +39,7 @@ const UpdateInfoForm = () => {
             setLoading(true);
             await axios.post(`/api/${user.id}/update-infor`, data);
             toast.success('Update information completed!');
-            window.location.assign(`/`);
+            router.refresh();
         } catch (error) {
             console.log(error);
             toast.error('Update failed!');

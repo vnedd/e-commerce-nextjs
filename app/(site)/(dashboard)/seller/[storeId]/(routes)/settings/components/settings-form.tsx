@@ -21,6 +21,7 @@ import { TailSpin } from 'react-loader-spinner';
 import SingleImageUpload from '@/components/ui/single-image-upload';
 import { LuChevronsUpDown } from 'react-icons/lu';
 import useCurrentUser from '@/hooks/use-current-user';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
     name: z.string().min(2),
@@ -152,7 +153,7 @@ const SettingsForm = () => {
     const { data: store } = useCurrentStore();
     const { data: user } = useCurrentUser();
     const [loading, setLoading] = useState(false);
-
+    const router = useRouter();
     const form = useForm<SettingsFormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -168,9 +169,9 @@ const SettingsForm = () => {
     const onSubmit = async (data: SettingsFormValues) => {
         try {
             setLoading(true);
-            await axios.patch(`/api/stores/${store.id}`, { ...data, userId: user.id });
+            await axios.patch(`/api/${user.id}/${store.id}`, { ...data });
             toast.success('Update settings successfully');
-            window.location.assign(`/seller/${store.id}`);
+            router.refresh();
         } catch (error: any) {
             console.log(error);
             if (error.response) {

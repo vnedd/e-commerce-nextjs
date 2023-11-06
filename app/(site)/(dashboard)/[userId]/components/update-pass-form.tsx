@@ -12,6 +12,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { TailSpin } from 'react-loader-spinner';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
     currentPassword: z.string().min(6, { message: 'Enter your current password' }),
@@ -21,6 +22,7 @@ const formSchema = z.object({
 const UpdatePassform = () => {
     const { data: user } = useCurrentUser();
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -34,7 +36,7 @@ const UpdatePassform = () => {
             setLoading(true);
             await axios.post(`/api/${user?.id}/update-password`, data);
             toast.success('Password Updated!');
-            window.location.assign('/');
+            router.refresh();
         } catch (error: any) {
             if (error.response) {
                 toast.error(error.response.data);
