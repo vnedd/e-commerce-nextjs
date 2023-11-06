@@ -73,7 +73,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, categories, size
         if (initialData) {
             setCheckedColor(initialData.productColor.map((item) => item.colorId));
             setCheckedSizes(initialData.productSize.map((item) => item.sizeId));
-            console.log('set checked');
         }
     }, [initialData]);
 
