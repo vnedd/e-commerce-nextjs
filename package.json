@@ -59,6 +59,7 @@
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.1",
+        "@types/next-auth": "^3.15.0",
         "@types/react-places-autocomplete": "^7.2.12",
         "prisma": "^5.5.2"
     }
